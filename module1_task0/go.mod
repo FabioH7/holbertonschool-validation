@@ -1,4 +1,4 @@
-module github.com/FabioH7/holbertonschool-validation/module1_tasks
+module github.com/FabioH7/holbertonschool-validation/module1_task0
 
 go 1.20
 
