@@ -15,3 +15,7 @@ Cleans the build in the dist folder
 ##### make post
 
 Creates a new folder
+
+##### make help
+
+Find out what commands do
