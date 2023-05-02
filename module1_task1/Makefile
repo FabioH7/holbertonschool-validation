@@ -6,5 +6,4 @@ clean:
 
 post:
 	hugo new posts/$(POST_NAME).md
-	sed -i'.swp' -e 's/title: "$(POST_NAME)"/title: "$(POST_TITLE)"/g' content/posts/$(POST_NAME).md
-	rm content/posts/$(POST_NAME).md.swp
+	sed -i '/title:/c\title: "$(POST_TITLE)"' content/posts/$(POST_NAME).md
