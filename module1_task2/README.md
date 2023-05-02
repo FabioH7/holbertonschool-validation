@@ -1,4 +1,4 @@
-## Prerequsities
+## Prerequisities
 
 You will need to install go and hugo@0.84.0
 
