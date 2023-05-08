@@ -20,8 +20,8 @@ test:  ## tests if the api server is running properly
 
 unit-tests: ## run unit tests
 	go test -v -short -coverprofile=coverage-units.out
-
-integration-tests:
+ 
+integration-tests:  ## run integration tests
 	go test -coverprofile=coverage-integrations.out
 
 help: ## Find out what each command does

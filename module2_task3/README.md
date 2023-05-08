@@ -35,3 +35,7 @@ Find out what commands do
 ##### make unit-tests
 
 Runs unit tests
+
+##### make integration-tests
+
+Runs integration tests
