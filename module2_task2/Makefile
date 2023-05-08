@@ -18,7 +18,7 @@ test:  ## tests if the api server is running properly
 	curl http://localhost:9999
 	curl http://localhost:9999/health
 
-unit-tests:
+unit-tests: ## run unit tests
 	go test -v -short -coverprofile=coverage-units.out
 
 help: ## Find out what each command does

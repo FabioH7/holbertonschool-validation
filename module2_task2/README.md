@@ -31,3 +31,7 @@ Checks the lint for go
 ##### make help
 
 Find out what commands do
+
+##### make unit-tests
+
+Runs unit tests
