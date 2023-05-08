@@ -16,6 +16,10 @@ removes the compiled file with the log file
 
 Stops the server by killing the pid
 
+##### make test
+
+Tests if the servr is running or no
+
 ##### make run
 
 Runs the server for the APIs at port 9999
