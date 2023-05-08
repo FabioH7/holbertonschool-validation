@@ -1,4 +1,5 @@
 build: ## builds the go api
+	make lint
 	go build
 
 run: ## compiles the code and creates a log file named awesome-api
