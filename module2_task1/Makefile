@@ -11,8 +11,7 @@ stop: ## stops the api server
 	pkill awesome-api
 
 clean: ## removes the compiled file and the log file
-	rm awesome-api
-	rm awesome-api.log 2> /dev/null
+	rm -f awesome-api awesome-api.log
 
 test:  ## tests if the api server is running properly
 	curl http://localhost:9999
