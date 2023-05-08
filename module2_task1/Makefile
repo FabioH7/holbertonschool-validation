@@ -1,5 +1,4 @@
 build: ## builds the go api
-	make lint
 	go build
 
 run: ## compiles the code and creates a log file named awesome-api
@@ -10,8 +9,9 @@ lint: ## Checks the lint for go
 
 stop: ## stops the api server 
 	pkill awesome-api
+
 clean: ## removes the compiled file and the log file
-	rm awesome-api 2> /dev/null
+	rm awesome-api
 	rm awesome-api.log 2> /dev/null
 
 test:  ## tests if the api server is running properly
