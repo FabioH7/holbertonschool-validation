@@ -7,6 +7,7 @@ run: ## compiles the code and creates a log file named awesome-api
 stop: ## stops the api server 
 	pkill awesome-api
 clean: ## removes the compiled file and the log file
+	pkill awesome-api
 	rm awesome-api awesome-api.log
 
 test:  ## tests if the api server is running properly
