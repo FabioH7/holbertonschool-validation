@@ -11,7 +11,6 @@ lint: ## Checks the lint for go
 stop: ## stops the api server 
 	pkill awesome-api
 clean: ## removes the compiled file and the log file
-	pkill awesome-api
 	rm awesome-api awesome-api.log
 
 test:  ## tests if the api server is running properly
