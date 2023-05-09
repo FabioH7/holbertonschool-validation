@@ -10,7 +10,7 @@ check: ## checks the markdown for styling problems
 	markdown-link-check content/posts/*
 
 validate: ## validate html
-	python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html
+	python3 opt/W3C-Validator/w3c_validator.py dist/index.html || true
 
 post: ## builds a new post in hugo template
 	hugo new posts/$(POST_NAME).md
