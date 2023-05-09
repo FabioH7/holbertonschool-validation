@@ -9,7 +9,7 @@ check: ## checks the markdown for styling problems
 	markdownlint content/posts/*
 	markdown-link-check content/posts/*
 
-validate:
+validate: ## validate html
 	python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html
 
 post: ## builds a new post in hugo template
