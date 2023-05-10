@@ -1,6 +1,4 @@
 build:  ## builds everything
-	make check
-	make lint
 	hugo > /dev/null 2>&1
 	go build
 
