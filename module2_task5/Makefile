@@ -1,4 +1,4 @@
-build: hugo-build go-build
+build: hugo-build go-build ## builds everything
 
 hugo-build: check ## build a new hugo template
 	hugo > /dev/null 2>&1
