@@ -1,7 +1,7 @@
 build: hugo-build go-build ## builds everything
 
 hugo-build: ## build a new hugo template
-	make build
+	make check
 	hugo > /dev/null 2>&1
 
 go-build: ## builds the go api
@@ -41,4 +41,3 @@ stop: ## stops the api server
 
 run: ## compiles the code and creates a log file named awesome-api
 	./awesome-api >./awesome-api.log 2>&1 &
-	hugo server
