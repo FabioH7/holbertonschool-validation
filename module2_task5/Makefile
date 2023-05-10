@@ -1,4 +1,6 @@
-build: hugo-build go-build ## builds everything
+build:  ## builds everything
+	make go-build
+	make hugo-build 
 
 hugo-build: ## build a new hugo template
 	make check
@@ -12,7 +14,7 @@ lint: ## Checks the lint for go
 	golangci-lint run
 
 clean: ## remove /dist
-	rm -rf dist awesome-api awesome-api.log coverage-integrations.out
+	rm -rf dist awesome-api awesome-api.log coverage-integrations.out coverage-units.out
 
 check: ## checks the markdown for styling problems
 	markdownlint content/posts/*
