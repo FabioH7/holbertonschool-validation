@@ -1,9 +1,10 @@
 build:  ## builds everything
-	make go-build
-	make hugo-build 
+	make check
+	make lint
+	hugo > /dev/null 2>&1
+	go build
 
 hugo-build: ## build a new hugo template
-	make check
 	hugo > /dev/null 2>&1
 
 go-build: ## builds the go api
