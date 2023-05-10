@@ -4,12 +4,6 @@ build:  ## builds everything
 	hugo > /dev/null 2>&1
 	go build
 
-hugo-build: ## build a new hugo template
-	hugo > /dev/null 2>&1
-
-go-build: ## builds the go api
-	make lint
-	go build
 
 lint: ## Checks the lint for go
 	golangci-lint run
@@ -31,7 +25,7 @@ post: ## builds a new post in hugo template
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-test: integration-tests unit-tests ## tests if the api server is running properly
+test: integration-tests unit-tests validate ## tests if the api server is running properly
 	
 unit-tests: ## run unit tests
 	go test -v -short -coverprofile=coverage-units.out
