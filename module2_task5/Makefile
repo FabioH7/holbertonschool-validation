@@ -1,9 +1,11 @@
 build: hugo-build go-build ## builds everything
 
-hugo-build: check ## build a new hugo template
+hugo-build: ## build a new hugo template
+	make build
 	hugo > /dev/null 2>&1
 
-go-build: lint ## builds the go api
+go-build: ## builds the go api
+	make lint
 	go build
 
 lint: ## Checks the lint for go
