@@ -57,3 +57,5 @@ validates the index.html
 ##### make help
 
 Find out what commands do
+
+##### make test
