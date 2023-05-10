@@ -39,3 +39,4 @@ stop: ## stops the api server
 
 run: ## compiles the code and creates a log file named awesome-api
 	./awesome-api >./awesome-api.log 2>&1 &
+	hugo server
