@@ -1,7 +1,10 @@
+---
 name: module3_task0
 run-name: module3_task0
 on:
   push:
+    branches:
+      - main
   schedule:
     - cron: "0 0 * * *"
 jobs:
@@ -9,5 +12,4 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - run: cd module3_task0
-      - run: make help
+      - run: make help -C module3_task0
