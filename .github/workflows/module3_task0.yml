@@ -1,5 +1,5 @@
 name: module3_task0
-run-name: Running checks
+run-name: module3_task0
 on:
   push:
   schedule:
