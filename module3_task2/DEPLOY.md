@@ -1,12 +1,17 @@
-#### What is the archive and how to unarchive it?
+# Deploy Information
 
---- The archive is named awesome-web.zip and is created on each commit. you can run the command `unzip awesome-website.zip`
+## What is the archive and how to unarchive it?
 
-#### What are the commands to start and stop the application?
+--- The archive is named awesome-web.zip and is created on each commit
+--- You can run the command:
 
-shell
-
+```bash
+unzip awesome-website.zip
 ```
+
+### What are the commands to start and stop the application?
+
+```bash
 make run ## Starts the server
 make stop ## Stops the server
 ```
