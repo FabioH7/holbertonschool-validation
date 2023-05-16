@@ -27,7 +27,7 @@ make stop ## Stops the server
 #### Tag
 
 1. Tag:
-   How to customize where the application logs are written?
+   How to customize where the application logs are written? push
 
 #### Zip
 
