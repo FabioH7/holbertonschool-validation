@@ -26,10 +26,10 @@ make stop ## Stops the server
 
 #### Tag
 
-1.Tag
-How to tag customize where the application logs are written?
+1. Tag:
+   How to customize where the application logs are written?
 
 #### Zip
 
-1.Zip
-How to tag customize where the application logs are written?
+1. Zip:
+   How to customize where the application logs are written?
