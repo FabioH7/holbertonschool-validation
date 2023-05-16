@@ -7,7 +7,6 @@ HUGO=hugo
 
 build:	## Generate the source code of the application to a binary.
 	make lint
-	$(GO) mod tidy
 	$(HUGO) && $(GO) build -o $(TARGET)
 
 run:	## Run the application in background by executing the binary.
