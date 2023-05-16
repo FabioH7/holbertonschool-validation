@@ -16,6 +16,8 @@ make run ## Starts the server
 make stop ## Stops the server
 ```
 
+tag
+
 #### How to customize where the application logs are written?
 
 --- Change the TARGET variable value
