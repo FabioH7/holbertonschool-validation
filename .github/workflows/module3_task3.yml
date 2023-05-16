@@ -22,7 +22,7 @@ jobs:
       - run: make run -C module3_task3
       - run: make stop -C module3_task3
       - run: make clean -C module3_task3
-      - name: text
+      - name: texti
         id: txt
         run: |
           CONTENT=$(cat module3_task3/DEPLOY.md)
