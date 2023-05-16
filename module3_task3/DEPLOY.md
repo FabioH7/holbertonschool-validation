@@ -23,3 +23,13 @@ make stop ## Stops the server
 #### How to “quickly” verify that the application is running (healthcheck)?
 
 --- Make an api call to 0.0.0.0:9999/health and you should get back the message "ALIVE"
+
+#### Tag
+
+1.Tag
+How to customize where the application logs are written?
+
+#### Zip
+
+1.Zip
+How to customize where the application logs are written?
