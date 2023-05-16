@@ -16,7 +16,15 @@ make run ## Starts the server
 make stop ## Stops the server
 ```
 
-tag
+## Tag
+
+1.Tag
+How to customize where the application logs are written?
+
+## Zip
+
+1.Zip
+How to customize where the application logs are written?
 
 #### How to customize where the application logs are written?
 
