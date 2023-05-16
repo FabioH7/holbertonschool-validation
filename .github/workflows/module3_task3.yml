@@ -1,6 +1,6 @@
 ---
-name: module3_task2
-run-name: module3_task2
+name: module3_task3
+run-name: module3_task3
 on:
   push:
     branches:
@@ -16,12 +16,17 @@ jobs:
           npm install
           npm install -g markdownlint-cli
       - run: sudo ./module3_task2/setup.sh
-      - run: make test -C module3_task2
-      - run: make build -C module3_task2
-      - run: make package -C module3_task2
-      - run: make run -C module3_task2
-      - run: make stop -C module3_task2
-      - run: make clean -C module3_task2
+      - run: make test -C module3_task3
+      - run: make build -C module3_task3
+      - run: make package -C module3_task3
+      - run: make run -C module3_task3
+      - run: make stop -C module3_task3
+      - run: make clean -C module3_task3
+      - name: text
+        id: txt
+        run: |
+          CONTENT=$(cat module3_task3/DEPLOY.md)
+          echo "::set-output name=body::$CONTENT"
       - uses: actions/upload-artifact@v3
         with:
           name: package
@@ -29,8 +34,9 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag-name: 1.0.0
+          tag_name: 1.0.0
           files: |
             awesome-website.zip
-          body.file: |
-            body.md
+          body: ${{ steps.txt.outputs.body }}
+          permissions:
+          contents: write
