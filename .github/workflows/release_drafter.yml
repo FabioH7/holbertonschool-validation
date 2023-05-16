@@ -1,5 +1,6 @@
 ---
-name: Release Drafter
+name: release_drafter
+run-name: release_drafter
 on:
   push:
   pull_request:
