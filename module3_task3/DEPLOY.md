@@ -24,12 +24,12 @@ make stop ## Stops the server
 
 --- Make an api call to 0.0.0.0:9999/health and you should get back the message "ALIVE"
 
-#### Tag
+## Tag
 
 1. Tag:
    How to customize where the application logs are written? push
 
-#### Zip
+## Zip
 
 1. Zip:
    How to customize where the application logs are written?
