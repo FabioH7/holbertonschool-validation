@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      - run: |
+          npm install
+          npm install -g markdownlint-cli
       - run: sudo ./module3_task2/setup.sh
       - run: make test -C module3_task2
       - run: make build -C module3_task2
