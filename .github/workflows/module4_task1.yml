@@ -1,10 +1,10 @@
 ---
-name: module4_task0
+name: module4_task1
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 jobs:
   job1:
     runs-on: ubuntu-22.04
@@ -15,19 +15,25 @@ jobs:
         run: sudo npm install -g markdownlint-cli
       - name: Install Markdown Link Check
         run: sudo npm install -g markdown-link-check
-      - run: sudo ./module4_task0/setup.sh
+      - run: sudo ./module4_task1/setup.sh
       - run: |
-          cd module4_task0
+          cd module4_task1
           make test
       - run: |
-          cd module4_task0
+          cd module4_task1
           make build
-      - run: make package -C module4_task0
-      - run: make run -C  module4_task0
+      - run: make package -C module4_task1
+      - run: make run -C  module4_task1
+      - run: |
+          cd module4_task1
+          make unit-tests
+      - run: |
+          cd module4_task1
+          make integration-tests
       - name: Get DEPLOY.md contents
         id: get-md
         run: |
-          CONTENT=$(cat module4_task0/DEPLOY.md)
+          CONTENT=$(cat module4_task1/DEPLOY.md)
           CONTENT="${CONTENT//'%'/'%25'}"
           CONTENT="${CONTENT//$'\n'/'%0A'}"
           CONTENT="${CONTENT//$'\r'/'%0D'}"
@@ -35,7 +41,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: module4_task0/awesome-website.zip
+          files: module4_task1/awesome-website.zip
           tag_name: 1.0.0
           body: ${{ steps.get-md.outputs.body }}
       - name: Deploy to Netlify
@@ -43,9 +49,9 @@ jobs:
           github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: 'module4_task0/dist'
+          publish-dir: "module4_task1/dist"
           production-branch: main
-          deploy-message: 'Deploy from GitHub Actions'
+          deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: true
           enable-commit-comment: true
           overwrites-pull-request-comment: true
