@@ -1,0 +1,59 @@
+---
+name: module4_task0
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  job1:
+    runs-on: ubuntu-22.04
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.29
+          working-directory: module4_task0
+      - name: Install Markdownlint
+        run: sudo npm install -g markdownlint-cli
+      - name: Install Markdown Link Check
+        run: sudo npm install -g markdown-link-check
+      - run: sudo ./module4_task0/setup.sh
+      - run: make test -C  module4_task0
+      - run: make build -C  module4_task0
+      - run: make package -C module4_task0
+      - run: make run -C  module4_task0
+      - name: Get DEPLOY.md contents
+        id: get-md
+        run: |
+          CONTENT=$(cat module4_task0/DEPLOY.md)
+          CONTENT="${CONTENT//'%'/'%25'}"
+          CONTENT="${CONTENT//$'\n'/'%0A'}"
+          CONTENT="${CONTENT//$'\r'/'%0D'}"
+          echo "::set-output name=body::$CONTENT"
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: module4_task0/awesome-website.zip
+          tag_name: 1.0.0
+          body: ${{ steps.get-md.outputs.body }}
+          permissions:
+          contents: write
+      - name: Deploy to Netlify
+        if: |
+          github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: "module4_task0/dist"
+          production-branch: main
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
