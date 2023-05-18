@@ -7,7 +7,6 @@ COVERAGE=coverage
 HUGO=hugo
 
 build:	## Generate the source code of the application to a binary.
-	make lint
 	make hugo-build
 	make go-build
 
