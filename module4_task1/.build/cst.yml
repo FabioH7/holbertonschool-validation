@@ -1,0 +1,18 @@
+---
+schemaVersion: "2.0.0"
+fileExistenceTests:
+  - name: Check if Hugo is installed
+    path: /usr/bin/hugo
+    shouldExist: true
+  - name: Check if Hadolint is installed
+    path: /usr/local/bin/hadolint
+    shouldExist: true
+commandTests:
+  - name: "hugo version"
+    command: "hugo"
+    args: ["version"]
+    expectedOutput: ["Hugo Static Site Generator v"]
+  - name: "hadolint version"
+    command: "hadolint"
+    args: ["--version"]
+    expectedOutput: ["Haskell Dockerfile Linter 2.6.0"]

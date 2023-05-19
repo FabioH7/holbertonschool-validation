@@ -1,15 +1,19 @@
 DOCKER= docker run -v "${PWD}:/go/src/app" -w "/go/src/app" $(DOCKER_IMAGE)
 DOCKER_IMAGE = awesome:build
+DOCKER_LINT = hadolint
+CST = container-structure-test
 TARGET=awesome-api
 RM=rm -rf
 MAKE=make
 COVERAGE=coverage
 HUGO=hugo
 
-build: build-docker	## Generate the source code of the application to binary.
-	$(MAKE) lint
+build: build-docker lint ## Generate the source code of the application to binary.
 	$(DOCKER) go mod tidy
 	$(MAKE) check && make hugo-build && make go-build
+
+kot:
+	${DOCKER} make lint
 
 build-docker: ## builds docker
 	docker build -t $(DOCKER_IMAGE) .build
@@ -36,7 +40,7 @@ clean:	## Stop the application. Delete the binary and the log file.
 	fi
 	@$(RM) $(TARGET) $(TARGET).log $(COVERAGE)-units.out $(COVERAGE)-integrations.out dist/ *~
 
-test: build-docker ## Test the application.
+test: build-docker docker-tests ## Test the application.
 	$(MAKE) unit-tests
 	$(MAKE) integration-tests
 	$(MAKE) validate
@@ -47,10 +51,11 @@ unit-tests: ## Run unit tests
 integration-tests: ## Run integration tests
 	$(DOCKER) go test -v -coverprofile=$(COVERAGE)-integrations.out
 
-lint: ## i fucking hate you lint
-	hadolint .build/Dockerfile
+lint: ## Run all lint checks
+	$(DOCKER_LINT) .build/Dockerfile
 
-docker-tests
+markdown-lint: ## Run markdown lint checks
+	markdownlint README.md DEPLOY.md
 
 check:	## Lint markdonw source, check dead links
 	markdownlint content/**/*.md
@@ -58,6 +63,9 @@ check:	## Lint markdonw source, check dead links
 
 validate:	## Validate the file dist/index.html using the command line Holberton’s W3C Validator.
 	python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html || true
+
+docker-tests: ## Run container structure tests
+	docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "${PWD}:/go/src/app" -w "/go/src/app" $(DOCKER_IMAGE) container-structure-test test --image awesome:build --config .build/cst.yml
 
 package: ## zips files
 	zip -r awesome-website.zip awesome-api ./dist
