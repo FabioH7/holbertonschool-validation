@@ -32,7 +32,7 @@ jobs:
           make build
       - run: |
           cd module4_task2
-          container-structure-test test --image awesome:build --config .build/cst.yml
+          make unit-tests
       - run: |
           cd module4_task2
           make docker-tests
