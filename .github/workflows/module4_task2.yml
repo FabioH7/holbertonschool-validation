@@ -68,19 +68,3 @@ jobs:
           files: module4_task2/awesome-website.zip
           tag_name: 1.0.0
           body: ${{ steps.get-md.outputs.body }}
-      - name: Deploy to Netlify
-        if: |
-          github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-        uses: nwtgck/actions-netlify@v2.0
-        with:
-          publish-dir: "module4_task2/dist"
-          production-branch: main
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: true
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
