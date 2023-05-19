@@ -8,7 +8,7 @@ MAKE=make
 COVERAGE=coverage
 HUGO=hugo
 
-build: build-docker lint ## Generate the source code of the application to binary.
+build: ## Generate the source code of the application to binary.
 	$(DOCKER) go mod tidy
 	$(MAKE) check && make hugo-build && make go-build
 
@@ -40,7 +40,7 @@ clean:	## Stop the application. Delete the binary and the log file.
 	fi
 	@$(RM) $(TARGET) $(TARGET).log $(COVERAGE)-units.out $(COVERAGE)-integrations.out dist/ *~
 
-test: build-docker docker-tests ## Test the application.
+test: ## Test the application.
 	$(MAKE) unit-tests
 	$(MAKE) integration-tests
 	$(MAKE) validate
