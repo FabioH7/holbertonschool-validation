@@ -32,3 +32,5 @@ WORKDIR /go/src/app
 
 # Copy everything from the current directory to the PWD (Present Working Directory) inside the container
 COPY . .
+
+CMD ["tail", "-f", "/dev/null"]
