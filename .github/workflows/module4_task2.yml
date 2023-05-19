@@ -1,6 +1,6 @@
 ---
 name: module4_task2
-on:
+on: # yamllint disable-line rule:truthy
   push:
   pull_request:
   schedule:
