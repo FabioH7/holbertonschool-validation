@@ -9,6 +9,7 @@ COVERAGE=coverage
 HUGO=hugo
 
 build: ## Generate the source code of the application to binary.
+	make build-docker
 	$(DOCKER) go mod tidy
 	$(MAKE) check && make hugo-build && make go-build
 
