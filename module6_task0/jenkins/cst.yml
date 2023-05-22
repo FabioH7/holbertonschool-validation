@@ -1,3 +1,4 @@
+---
 image: your-custom-jenkins-image
 checks:
   - command: "java -version"
