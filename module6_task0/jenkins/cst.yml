@@ -1,0 +1,4 @@
+image: your-custom-jenkins-image
+checks:
+  - command: "java -version"
+    expectedOutput: 'openjdk version "11'
